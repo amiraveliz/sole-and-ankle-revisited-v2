@@ -16,31 +16,28 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
-        <WrapperOverlay>
-          <Dialog.Overlay>
-            <WrapperContent>
-              <CloseWrapper aria-label="Close">
-                <Cross2Icon onClick={onDismiss} />
-              </CloseWrapper>
-              <Dialog.Title />
-              <DialogContainerWrapper>
-                <NavTopWrapper>
-                  <a href="/sale">Sale</a>
-                  <a href="/new">New&nbsp;Releases</a>
-                  <a href="/men">Men</a>
-                  <a href="/women">Women</a>
-                  <a href="/kids">Kids</a>
-                  <a href="/collections">Collections</a>
-                </NavTopWrapper>
-                <NavBottomWrapper>
-                  <a href="/terms">Terms and Conditions</a>
-                  <a href="/privacy">Privacy Policy</a>
-                  <a href="/contact">Contact Us</a>
-                </NavBottomWrapper>
-              </DialogContainerWrapper>
-            </WrapperContent>
-          </Dialog.Overlay>
-        </WrapperOverlay>
+        <WrapperOverlay />
+        <WrapperContent>
+          <CloseWrapper aria-label="Close">
+            <Cross2Icon onClick={onDismiss} />
+          </CloseWrapper>
+          <Dialog.Title />
+          <DialogContainerWrapper>
+            <NavTopWrapper>
+              <a href="/sale">Sale</a>
+              <a href="/new">New&nbsp;Releases</a>
+              <a href="/men">Men</a>
+              <a href="/women">Women</a>
+              <a href="/kids">Kids</a>
+              <a href="/collections">Collections</a>
+            </NavTopWrapper>
+            <NavBottomWrapper>
+              <a href="/terms">Terms and Conditions</a>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/contact">Contact Us</a>
+            </NavBottomWrapper>
+          </DialogContainerWrapper>
+        </WrapperContent>
       </Dialog.Portal>
     </Dialog.Root>
   );
@@ -65,7 +62,7 @@ const DialogContainerWrapper = styled.div`
   height: 100%;
 `;
 
-const WrapperOverlay = styled.div`
+const WrapperOverlay = styled(Dialog.Overlay)`
   background: rgba(0 0 0 / 0.5);
   position: fixed;
   top: 0;
@@ -77,12 +74,12 @@ const WrapperOverlay = styled.div`
   overflow-y: auto;
 `;
 
-const WrapperContent = styled.div`
+const WrapperContent = styled(Dialog.Content)`
   min-width: 300px;
   background: white;
   height: 100vh;
   right: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 70%;
   max-width: 400px;
