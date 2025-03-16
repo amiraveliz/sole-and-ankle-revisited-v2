@@ -1,26 +1,39 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS } from '../../constants';
+import { COLORS, DEVICE } from "../../constants";
 
-import SearchInput from '../SearchInput';
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
+import SearchInput from "../SearchInput";
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
 
 const SuperHeader = () => {
   return (
-    <Wrapper>
-      <MarketingMessage>
-        Free shipping on domestic orders over $75!
-      </MarketingMessage>
-      <SearchInput />
-      <HelpLink href="/help">Help</HelpLink>
-      <UnstyledButton>
-        <Icon id="shopping-bag" strokeWidth={1} />
-      </UnstyledButton>
-    </Wrapper>
+    <>
+      <MobileLine />
+      <Wrapper>
+        <MarketingMessage>
+          Free shipping on domestic orders over $75!
+        </MarketingMessage>
+        <SearchInput />
+        <HelpLink href="/help">Help</HelpLink>
+        <UnstyledButton>
+          <Icon id="shopping-bag" strokeWidth={1} />
+        </UnstyledButton>
+      </Wrapper>
+    </>
   );
 };
+
+const MobileLine = styled.div`
+  height: 4px;
+  background-color: ${COLORS.gray[900]};
+  display: none;
+
+  @media ${DEVICE.sm} {
+    display: block;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,6 +45,10 @@ const Wrapper = styled.div`
   height: 40px;
   padding-left: 32px;
   padding-right: 32px;
+
+  @media ${DEVICE.sm} {
+    display: none;
+  }
 `;
 
 const MarketingMessage = styled.span`
